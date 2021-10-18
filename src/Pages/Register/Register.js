@@ -1,14 +1,15 @@
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
-    const { getUserName, getUserEmail, getUserPassword, createAccount } = useAuth();
+    const { getUserName, getUserEmail, getUserPassword, createAccount, user, signInUsingGoogle } = useAuth();
  
     return (
         <div>
             <section>
-                <div className="container mx-auto">
+                { !user?.email ? <div className="container mx-auto">
                     <h1 className="text-3xl text-gray-800 font-bold leading-none mb-3 text-center">Registration Form</h1>
                     <div className="flex flex-row justify-center">
                     <div className="w-full md:w-1/3 mx-5">
@@ -35,14 +36,14 @@ const Register = () => {
                             </form>
                             <br />
                             <div className="flex items-center justify-between">
-                                <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                <button onClick={signInUsingGoogle} className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                                     Sign In With Google
                                 </button>
                                 <Link className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" to="/login">Already registered??</Link>
                         </div>
                     </div>
                     </div>
-                </div>
+                </div> : <h1>User logged In</h1> }
             </section>
         </div>
     );

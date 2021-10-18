@@ -23,6 +23,7 @@ const useFirebase = () => {
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
     const [password, setPassword] = useState("");
+    
 
     const auth = getAuth();
 
@@ -72,6 +73,11 @@ const useFirebase = () => {
         setError(err.message);
       });
     }
+    // Email sign in
+    function signInWithEmail(e) {
+        e.preventDefault();
+        return signInWithEmailAndPassword(auth, email, password);
+    }
 
     // set name and profile image url
   const setNameAndImage= () => {
@@ -95,7 +101,7 @@ const useFirebase = () => {
             setError(error.message);
         });
     }
-    
+
     useEffect(() => {
         onAuthStateChanged(auth, user => {
             if(user){
@@ -114,7 +120,8 @@ const useFirebase = () => {
         createAccount,
         getUserName,
         getUserEmail,
-        getUserPassword
+        getUserPassword,
+        signInWithEmail
         
     }
 }
