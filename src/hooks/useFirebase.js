@@ -22,6 +22,7 @@ const useFirebase = () => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
+    const [loading, setLoading] = useState(true);
     const [password, setPassword] = useState("");
     
 
@@ -38,13 +39,9 @@ const useFirebase = () => {
     
     //Sign In With Google
     const signInUsingGoogle = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                setUser(result.user);
-            })
-            .catch(error => {
-                setError(error.message)
-            })
+      return signInWithPopup(auth, googleProvider)
+      .finally(() => { setLoading(false) });
+            
     }
     
     //Get User Name
@@ -93,29 +90,31 @@ const useFirebase = () => {
    
     // sign out
     function logOut() {
-        signOut(auth)
-        .then((res) => {
-            setUser({});
-        })
-        .catch((error) => {
-            setError(error.message);
-        });
+      setLoading(true);
+      signOut(auth)
+          .then(() => {
+              setUser({})
+          })
+          .finally(() => setLoading(false))
     }
 
     useEffect(() => {
-        onAuthStateChanged(auth, user => {
-            if(user){
-                setUser(user)
-            }
-            else{
-                
-            }
-        })
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setUser(user);
+        }
+        else {
+            setUser({});
+        }
+        setLoading(false);
+    });
+    return () => unsubscribe;
     },[])
     return {
         user,
         logOut,
         error,
+        loading,
         signInUsingGoogle,
         createAccount,
         getUserName,

@@ -21,9 +21,15 @@ const Header = () => {
                                     <NavLink activeClassName="active" to="/membership">Membership</NavLink>
                                     <NavLink activeClassName="active" to="/register">Sign Up</NavLink>
                                 </Nav>
+                                {user?.email && <Nav className="justify-content-end" >
+                                    <span style={{color:'#fff'}}>{user.displayName}</span>
+                                    <button onClick={logOut} className="btn btn-danger">LogOut</button>
+                                </Nav>}
                             </Navbar.Collapse>
+                            
                         </Container>
                 </Navbar>
+                
            </div>           
         </div>
     );

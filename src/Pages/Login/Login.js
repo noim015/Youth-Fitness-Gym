@@ -1,16 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
 
 
 const Login = () => {
   const { getUserName, getUserEmail, getUserPassword, user, signInWithEmail, signInUsingGoogle } = useAuth();
+  const location = useLocation();
+  const history = useHistory();
+  const redirect = location.state?.from || "/home";
+  const handleGoogleLogin = () => {
+    signInUsingGoogle()
+        .then(result => {
+            history.push(redirect);
+        })
+}
     return (
         <div className="container mx-auto my-5">
                 <h1 className="text-3xl text-gray-800 font-bold leading-none mb-3 text-center     py-5">Login Form</h1>
           { !user?.email ? <div className="flex justify-center">
             <div className="w-full md:w-1/3 mx-5">
-               <form onSubmit={signInWithEmail} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+               <form onSubmit={handleGoogleLogin} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                           Email
@@ -34,7 +43,7 @@ const Login = () => {
                     </div>
                     <br />
                   <div className="flex items-center justify-between">
-                        <button onClick={signInUsingGoogle} className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        <button onClick={handleGoogleLogin} className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                           Sign Up With Google
                         </button>
                         <Link className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" to="/register">New To site??</Link>
