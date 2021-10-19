@@ -1,0 +1,102 @@
+[
+    {
+      "key": 1,
+      "img": "https://www.tgogc.com/userfiles/images/TGO-Gym-class-Kesson-Physio(1).jpg",
+      "title": "Outdoor Classes",
+      "desc": "We set the standard for quality in group fitness training. The variety of programs, value and level of quality are unmatched in the neighborhood. We may be an old school gym, but we are with the times and provide contemporary classes in various disciplines, including Yoga, Pilates and Boxing.",
+      "fee": 500.00,
+      "trainer": "Jack Bai",
+      "rating": 5,
+      "allReadyEnrolled": "320",
+      "trainerThumb": "https://e7.pngegg.com/pngimages/931/921/png-clipart-coach-personal-trainer-health-man-flu-sport-health-tshirt-blue.png"
+    },
+    {
+      "key": 2,
+      "img": "https://blogs.constantcontact.com/wp-content/uploads/2021/01/Social-16.jpg",
+      "title": "Personal Training",
+      "desc": "Personal Training at F7 is all about you. You will not only leave each session looking great, but feeling great too. We guarantee you will actually enjoy working out again! Below are just a few of the added benefits and features:",
+      "fee": 400.00,
+      "trainer": "Jacob Ma",
+      "rating": 4.2,
+      "allReadyEnrolled": "450",
+      "trainerThumb": "https://getfyt.s3.amazonaws.com/users_avatar/33348/avatar_thumbnailer/2019-03-26t130735799677-avatar-from-url-33348.jpg.300x300_q85_upscale.jpg"
+    },
+    {
+      "key": 3,
+      "img": "https://img.grouponcdn.com/iam/4z2cdbVyz6Sk1mHnQFo4/Nc-2048x1229/v1/c870x524.jpg",
+      "title": "Group Training",
+      "desc": "Head to a group fitness class on the days you’re not motivated to work out. If your problem is getting to the gym in the first place, a group class can be all the motivation you need: it would be rude to sign up and bail, leaving an open spot that could otherwise have been filled by someone else.",
+      "fee": 18.9,
+      "trainer": "Hasan Haq",
+      "rating": 4,
+      "allReadyEnrolled": "680",
+      "trainerThumb": "https://e7.pngegg.com/pngimages/931/921/png-clipart-coach-personal-trainer-health-man-flu-sport-health-tshirt-blue.png"
+    },
+    {
+      "key": 4,
+      "img": "https://allamericanfitness.com/wp-content/uploads/2017/02/Vectra_Fitness.jpg",
+      "title": "Digital Coaching",
+      "desc": "It’s more than a workout. It’s an experience in modern day fitness technology. Each individual fitness exercise is explained to you by a coach in a high-quality video. Use your home fitness equipment or train with your body weight.",
+      "fee": 48.69,
+      "trainer": "Hasan",
+      "rating": 3.5,
+      "allReadyEnrolled": "350",
+      "trainerThumb": "https://getfyt.s3.amazonaws.com/users_avatar/28343/avatar_thumbnailer/2018-11-13t014355843101-blob.jpg.300x300_q85_upscale.jpg"
+    },
+    {
+      "key": 5,
+      "img": "https://mvhospital.org/wp-content/uploads/2020/08/Health-and-Wellness-Blog.jpg",
+      "title": "Mind and Body",
+      "desc": "In every cardio games session our fun and unique challenges are always guaranteed to provide you with an effective full body workout.",
+      "fee": 48.69,
+      "trainer": "Hasan",
+      "rating": 4.5,
+      "allReadyEnrolled": "560",
+      "trainerThumb": "https://img.lovepik.com/element/40090/0936.png_860.png"
+    },
+    {
+      "key": 6,
+      "img": "https://mindbodygreen-res.cloudinary.com/image/upload/c_crop,x_0,y_68,w_1198,h_673/c_fill,w_800,h_400,g_auto,q_85,fl_lossy,f_jpg/org/gdtfdxa3nkd6igl19.jpg",
+      "title": "Yoga",
+      "desc": "It is imperative that everyone maximises the time they spend exercising to help guarantee optimal results from the commitment put into achieving each calculated goal. In order for this to be effectively accomplished every training session has to present a measurable, progressive physical challenge in respect of the undertaken cardiovascular or resistance-based exercises.",
+      "fee": 48.69,
+      "trainer": "Hasan",
+      "rating": 5.0,
+      "allReadyEnrolled": "500",
+      "trainerThumb": "https://img.pngio.com/exercise-physical-fitness-fitness-centre-personal-trainer-general-general-fitness-training-png-800_800.png"
+    },
+    {
+      "key": 7,
+      "img": "https://static.india.com/wp-content/uploads/2021/09/pjimage-2021-09-20T130906.548.jpg",
+      "title": "Cardio",
+      "desc": "It is imperative that everyone maximises the time they spend exercising to help guarantee optimal results from the commitment.",
+      "fee": 650.00,
+      "trainer": "Hasan",
+      "rating": 3.5,
+      "allReadyEnrolled": "430.00",
+      "trainerThumb": "https://cdn.imgbin.com/11/10/22/imgbin-teambodycoach-personal-trainer-t-shirt-coaching-fitness-coach-MYK95x695Ju3pNeSvcnj8ZnMg.jpg"
+    },
+    {
+      "key": 8,
+      "img": "https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=1200&h=600&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F35%2F2019%2F04%2F03205752%2Fskilrun-fb.jpg",
+      "title": "Skill Run",
+      "desc": "It is imperative that everyone maximises the time they spend exercising to help guarantee optimal results from the commitment put into achieving each calculated goal. In order for this to be effectively accomplished every training session has to present a measurable, progressive physical challenge in respect of the undertaken cardiovascular or resistance-based exercises.",
+      "fee": 47.69,
+      "trainer": "Hasan",
+      "rating": 4.5,
+      "allReadyEnrolled": "470.00",
+      "trainerThumb": "https://p.kindpng.com/picc/s/21-217931_transparent-personal-trainer-png-portable-network-graphics-png.png"
+    },
+    {
+      "key": 9,
+      "img": "https://images.onlymyhealth.com/imported/images/2015/June/06_Jun_2015/healthy-back.jpg",
+      "title": "Muscular Strength Fitness",
+      "desc": "Working from home meant we could vary snack and coffee breaks, change our desks or view, drink on the job, even spend the day in pajamas, and often meet to gossip or share ideas.",
+      "fee": 770.00,
+      "trainer": "Hasan",
+      "rating": 4.0,
+      "allReadyEnrolled": "500",
+      "trainerThumb": "https://www.kindpng.com/picc/m/21-218047_transparent-personal-trainer-png-gym-trainer-png-png.png"
+    }
+  ]
+  

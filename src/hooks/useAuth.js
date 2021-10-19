@@ -5,7 +5,6 @@ import { AuthContext } from "../Pages/context/AuthProvider";
 
 const useAuth = () => {
      return useContext(AuthContext);
-}
-
-
-export default useAuth;
+   };
+   
+   export default useAuth;
