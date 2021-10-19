@@ -1,23 +1,49 @@
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
-    const { getUserName, getUserEmail, getUserPassword, createAccount, user, signInUsingGoogle } = useAuth();
+   
+    const { AllContexts } = useAuth();
+    const { 
+        user,
+        logOut,
+        error,
+        loading,
+        getUserEmail,
+        getUserPassword,
+        signInUsingGoogle,
+        signInWithEmail,
+        createAccount,
+        getUserName
+    } = AllContexts;
+  const location = useLocation();
+  const history = useHistory();
+
+  const redirect = location.state?.from || "/home";
+  const handleGoogleLogin = () => {
+    signInUsingGoogle().then(result => {
+            history.push(redirect);
+            
+        })
+}
+  const handleCreateAccount = () => {
+    createAccount().then(result => {
+            history.push(redirect);
+            
+        })
+}
  
     return (
         <div>
-            <section>
+            <section style={{ padding: '50px 0 20px' }}>
                 { !user?.email ? <div className="container mx-auto">
                     <h1 className="text-3xl text-gray-800 font-bold leading-none mb-3 text-center">Registration Form</h1>
                     <div className="flex flex-row justify-center">
                     <div className="w-full md:w-1/3 mx-5">
-                            <form onSubmit={createAccount}>
-                                <label className="block">
-                                    <span className="text-gray-700">Name</span>  
-                                </label>
-                                    <input onBlur={getUserName} type="text" className="form-input mt-1 block w-full px-4 py-3 border-2 border-gray-300" name="name" placeholder="Please enter your name"/>
+                            <form onSubmit={handleCreateAccount}>
+                                
                                 <label className="block">
                                     <span className="text-gray-700">Email</span>
                                 </label>
@@ -36,7 +62,7 @@ const Register = () => {
                             </form>
                             <br />
                             <div className="flex items-center justify-between">
-                                <button onClick={signInUsingGoogle} className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                <button onClick={handleGoogleLogin} className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                                     Sign In With Google
                                 </button>
                                 <Link className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" to="/login">Already registered??</Link>

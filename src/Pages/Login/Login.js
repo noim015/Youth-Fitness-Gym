@@ -1,10 +1,12 @@
 import React from 'react';
+import { Alert, Row } from 'react-bootstrap';
 import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
 
 
 const Login = () => {
-  const { getUserName, getUserEmail, getUserPassword, user, signInWithEmail, signInUsingGoogle } = useAuth();
+  const { getUserName, getUserEmail, getUserPassword, signInWithEmail, AllContexts } = useAuth();
+  const {signInUsingGoogle, user} = AllContexts;
   const location = useLocation();
   const history = useHistory();
   const redirect = location.state?.from || "/home";
@@ -14,6 +16,7 @@ const Login = () => {
             history.push(redirect);
         })
 }
+
     return (
         <div className="container mx-auto my-5">
                 <h1 className="text-3xl text-gray-800 font-bold leading-none mb-3 text-center     py-5">Login Form</h1>
@@ -37,9 +40,7 @@ const Login = () => {
                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                           Sign In
                         </button>
-                        <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-                          Forgot Password?
-                        </a>
+                        
                     </div>
                     <br />
                   <div className="flex items-center justify-between">
@@ -50,7 +51,10 @@ const Login = () => {
                   </div>
               </form>
            </div>
-         </div> : <h1>You are already logged in</h1> }
+         </div> : <Row> 
+                 <Alert  variant={'danger'}>
+                       You are already logged In!
+                </Alert> </Row> }
         </div>
     );
 };

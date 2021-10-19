@@ -4,7 +4,8 @@ import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './Header.css'
 const Header = () => {
-    const { user, logOut } = useAuth();
+    const { AllContexts} = useAuth();
+    const { user, logOut } = AllContexts;
     return (
         <div> 
            <div className="header_navigration">
@@ -19,10 +20,11 @@ const Header = () => {
                                     <NavLink exact activeClassName="active" to="/">Home</NavLink>
                                     <NavLink activeClassName="active" to="/courses">Courses</NavLink>
                                     <NavLink activeClassName="active" to="/membership">Membership</NavLink>
-                                    <NavLink activeClassName="active" to="/register">Sign Up</NavLink>
+                                    <NavLink activeClassName="active" to="/booknow">Book Now</NavLink>
+                                    {!user?.email && <NavLink activeClassName="active" to="/register">Register Now</NavLink>}
                                 </Nav>
                                 {user?.email && <Nav className="justify-content-end" >
-                                    <span style={{color:'#fff'}}>{user.displayName}</span>
+                                    <span style={{color:'#fff',padding:'10px'}}>{user.displayName}</span>
                                     <button onClick={logOut} className="btn btn-danger">LogOut</button>
                                 </Nav>}
                             </Navbar.Collapse>

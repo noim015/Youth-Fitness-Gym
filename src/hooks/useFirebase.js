@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import intializAuthentication from "../Firebase/firebase.init";
 import {
-    sendEmailVerification,
-    updateProfile,
+    
     createUserWithEmailAndPassword,
     signOut,
     getAuth,
@@ -10,32 +9,26 @@ import {
     signInWithPopup,
     GoogleAuthProvider,
     signInWithEmailAndPassword,
-    sendPasswordResetEmail,
   } from "firebase/auth";
 
 intializAuthentication();
 
 const useFirebase = () => {
 
-    const [user, setUser] = useState({});
-    const [error, setError] = useState("");
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
-    const [photo, setPhoto] = useState("");
-    const [loading, setLoading] = useState(true);
-    const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [user, setUser] = useState("");
+  const [error, setError] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [password, setPassword] = useState("");
     
 
     const auth = getAuth();
 
     const googleProvider = new GoogleAuthProvider();
    
-    // clear error
-    useEffect(() => {
-        setTimeout(() => {
-        setError("");
-        }, 5000);
-    }, [error]);
+   
     
     //Sign In With Google
     const signInUsingGoogle = () => {
@@ -63,30 +56,20 @@ const useFirebase = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
-        setNameAndImage();
+        
         alert("user has been created");
       })
       .catch((err) => {
-        setError(err.message);
+        
       });
     }
     // Email sign in
     function signInWithEmail(e) {
-        e.preventDefault();
+      e.preventDefault();
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    // set name and profile image url
-  const setNameAndImage= () => {
-    updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    })
-      .then(() => {})
-      .catch((error) => {
-        setError(error.message);
-      });
-  }
+   
    
     // sign out
     function logOut() {
@@ -111,16 +94,16 @@ const useFirebase = () => {
     return () => unsubscribe;
     },[])
     return {
-        user,
-        logOut,
-        error,
-        loading,
-        signInUsingGoogle,
-        createAccount,
-        getUserName,
-        getUserEmail,
-        getUserPassword,
-        signInWithEmail
+      user,
+      logOut,
+      error,
+      loading,
+      getUserEmail,
+      getUserPassword,
+      signInUsingGoogle,
+      signInWithEmail,
+      createAccount,
+      getUserName,
         
     }
 }
