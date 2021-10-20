@@ -1,16 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import './PageNotFound.css';
 const NotFound = () => {
   return (
-    <div
-      style={{
-        height: "91vh",
-        
-        backgroundAttachment: "fixed",
-      }}
-      className="d-flex justify-content-center align-items-center"
-    >
+    <div className="d-flex justify-content-center align-items-center notFound" >
       <div className="text-center my-5">
         <h1 style={{ fontSize: "100px", color: "red" }}>404</h1>
         <h4 className="text-white">OPPS! PAGE NOT FOUND</h4>
@@ -18,7 +11,7 @@ const NotFound = () => {
           Sorry, the page you're looking for doesn't exist. you can return to
           home and look for another.
         </p>
-        <NavLink to="/home">
+        <NavLink to="/">
           <button className="btn btn-primary">Return to Home</button>
         </NavLink>
       </div>

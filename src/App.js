@@ -13,7 +13,6 @@ import BookNow from './Pages/BookNow/BookNow';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import Home from './Pages/Home/Home/Home';
 import Footer from './Pages/Footer/Footer';
-import BookSuccess from './Pages/BookSuccess/BookSuccess';
 
 function App() {
   return (
@@ -41,9 +40,6 @@ function App() {
        </PrivateRoute>
        <PrivateRoute path="/membership">
           <Membership></Membership>
-       </PrivateRoute>
-       <PrivateRoute path="/booksuccess">
-         <BookSuccess></BookSuccess>
        </PrivateRoute>
        <PrivateRoute path="/courses/:key">
          <Details></Details>

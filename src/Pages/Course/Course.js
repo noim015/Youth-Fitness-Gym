@@ -1,9 +1,9 @@
 import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
 const Course = ({ course }) => {
-   const {key , title, fee, desc, img , trainer, trainerThumb} = course;
+   const {key , title, fee, desc, img } = course;
     return (
         <Col sm={12} md={6} lg={4}>
      
@@ -17,10 +17,7 @@ const Course = ({ course }) => {
             <Card.Body className="my-1 py-1">
               <h4>Price: {fee}$</h4>
             </Card.Body>
-            
             <Card.Body className="d-flex">
-              
-              
             <NavLink
                 to={`/courses/${key}`}
                 className="btn btn-primary w-100 me-1"

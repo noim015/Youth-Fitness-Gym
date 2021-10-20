@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import useCourses from '../../hooks/useCourses';
+
 
 const Details = () => {
     const { key } = useParams();
@@ -19,14 +19,13 @@ const Details = () => {
               <img className="img-fluid" src={matchingCourse.img} alt="" />
             </Col>
             <Col md={6} className="d-flex justify-content-center flex-column">
-              <h2>{matchingCourse.title}</h2>
-              <h5>{matchingCourse.desc}</h5>
+              <h2 style={{ fontSize:'35px',padding:'10px 0' }}>{matchingCourse.title}</h2>
+              <h5 style={{ fontSize:'18px',padding:'10px 0', lineHeight: '1.5' }} >{matchingCourse.desc}</h5>
               <Row>
                 <Col>
                   <h1>Fee:{matchingCourse.fee}$</h1>
                   <div className="my-2">
                   <Button className='text-center btn btn-danger'>Book Now</Button>
-                    
                   </div>
                 </Col>
                 <Col>

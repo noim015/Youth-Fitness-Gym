@@ -1,11 +1,8 @@
 import React from 'react';
-
 import gymExprt1 from '../../../images/trainers/gymExprt1.jpg';
 import gymExprt2 from '../../../images/trainers/gymExprt2.jpg'
 import gymExprt3 from '../../../images/trainers/gymExprt3.jpg'
 import Expert from '../Expert/Expert';
-
-
 
 const experts = [
     {
@@ -24,11 +21,10 @@ const experts = [
         expertize: 'Muscle Building'
     }
 ]
-
 const Experts = () => {
     return (
         <div id="experts" className="container">
-            <h1 className="text-center py-5">Our Experts</h1>
+            <h1 style={{ fontSize:'45px', textAlign: 'center', padding: '25px 0' }} >Our Experts</h1>
             <div className="row">
                 {
                     experts.map(expert => <Expert

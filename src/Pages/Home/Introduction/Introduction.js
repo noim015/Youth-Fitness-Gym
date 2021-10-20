@@ -7,7 +7,7 @@ const Testimonials = () => {
             <Container>
                 <Row>
                     <Col>
-                       <h1 className="text-center py-5" >Introduction</h1>
+                       <h1 style={{ fontSize:'45px', textAlign: 'center', padding: '25px 0' }} >Introduction</h1>
                     </Col>
                 </Row>
                 <Row className="pb-5">

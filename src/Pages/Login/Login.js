@@ -1,32 +1,35 @@
 import React, { useState } from 'react';
 import { Alert, Form, Row, Button, Container, Col } from 'react-bootstrap';
-import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
-import useAuth from '../../hooks/useAuth';
+import { Link, useLocation, useHistory } from "react-router-dom";
 import useFirebase from '../../hooks/useFirebase';
 
 
 const Login = () => {
+
   const {
     handleGoogleLogin,
     user,
+    error,
+    setError,
     handleUserLogin,
   } = useFirebase();
   const location = useLocation();
   const history = useHistory();
   const redirect = location.state?.from || "/home";
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  
 
+  //Get User Email
   const hanldeEmail = (e) => {
     setEmail(e.target.value);
   };
+
+  //Get User Password
   const hanldePassword = (e) => {
     setPassword(e.target.value);
   };
 
- 
  //Login with Email and Password 
   const handleLogin = () => {
     handleUserLogin(email, password)
@@ -49,18 +52,19 @@ const Login = () => {
         });
         
   }
+     
 
     return (
       
           <div className="signin_form" style={{ padding:'30px 10px'}}>
                 <Container>
                   <Row>
-                      <h1 className="text-center text-primary py-5">User Sign In Form</h1>
+                      <h1 style={{ fontSize:'45px', textAlign: 'center', padding: '25px 0' }}>User Sign In Form</h1>
                   </Row>
                   {!user?.email ?
                 <Row className="pb-5">
-                    <Col></Col>
-                    <Col className="mb-3 bdr">
+                    <Col xs={0} md={3} ></Col>
+                    <Col xs={12} md={6} className="mb-3 bdr">
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control onChange={hanldeEmail} type="email" placeholder="Enter email" />
@@ -79,12 +83,12 @@ const Login = () => {
                     <br />
                     <div className="flex items-center justify-between">
                         <button onClick={signInUsingGoogle} className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                          Sign Up With Google
+                          Sign In With Google
                         </button>
                         <Link className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" to="/register">New To site??</Link>
                   </div>
                     </Col>
-                    <Col></Col>
+                    <Col xs={0} md={3} ></Col>
                 </Row> : <Alert  variant={'danger'}>
                               <h1 className="text-center" >You are signed in</h1>
                         </Alert> }

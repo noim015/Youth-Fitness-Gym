@@ -13,7 +13,7 @@ import {
 } from "firebase/auth";
 
 intializAuthentication();
-const auth = getAuth();
+
 
 
 
@@ -25,6 +25,14 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+
+
+    // clear error
+  useEffect(() => {
+    setTimeout(() => {
+      setError("");
+    }, 5000);
+  }, [error]);
 
 //Google Login
   const handleGoogleLogin = () => {
@@ -80,6 +88,7 @@ const useFirebase = () => {
     handleGoogleLogin,
     user,
     error,
+    setError,
     loading,
     handleLogout,
     handleUserRegister,

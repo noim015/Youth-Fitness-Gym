@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './Header.css'
 const Header = () => {
@@ -11,9 +11,7 @@ const Header = () => {
            <div className="header_navigration">
                 <Navbar bg="dark" expand="lg" variant="dark">
                         <Container>
-                            
                                 <NavLink style={{textDecoration:'none',color:'#fff',fontSize:'25px'}} to="/">Youth Fitness Gym</NavLink>
-                            
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="me-auto">
@@ -28,7 +26,6 @@ const Header = () => {
                                     <button onClick={handleLogout} className="btn btn-danger">LogOut</button>
                                 </Nav>}
                             </Navbar.Collapse>
-                            
                         </Container>
                 </Navbar>
                 
