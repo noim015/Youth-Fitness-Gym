@@ -45,9 +45,9 @@ function App() {
        <PrivateRoute path="/booksuccess">
          <BookSuccess></BookSuccess>
        </PrivateRoute>
-       <Route path="/courses/:key">
+       <PrivateRoute path="/courses/:key">
          <Details></Details>
-       </Route>
+       </PrivateRoute>
        <Route path="*">
           <PageNotFound></PageNotFound>
         </Route>

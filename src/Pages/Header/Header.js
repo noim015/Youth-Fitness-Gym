@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import './Header.css'
 const Header = () => {
     const { AllContexts} = useAuth();
-    const { user, logOut } = AllContexts;
+    const { user, handleLogout } = AllContexts;
     return (
         <div> 
            <div className="header_navigration">
@@ -25,7 +25,7 @@ const Header = () => {
                                 </Nav>
                                 {user?.email && <Nav className="justify-content-end" >
                                     <span style={{color:'#fff',padding:'10px'}}>{user.displayName}</span>
-                                    <button onClick={logOut} className="btn btn-danger">LogOut</button>
+                                    <button onClick={handleLogout} className="btn btn-danger">LogOut</button>
                                 </Nav>}
                             </Navbar.Collapse>
                             

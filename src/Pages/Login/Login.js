@@ -1,61 +1,103 @@
-import React from 'react';
-import { Alert, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Alert, Form, Row, Button, Container, Col } from 'react-bootstrap';
 import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
+import useFirebase from '../../hooks/useFirebase';
 
 
 const Login = () => {
-  const { getUserName, getUserEmail, getUserPassword, signInWithEmail, AllContexts } = useAuth();
-  const {signInUsingGoogle, user} = AllContexts;
+  const {
+    handleGoogleLogin,
+    user,
+    handleUserLogin,
+  } = useFirebase();
   const location = useLocation();
   const history = useHistory();
   const redirect = location.state?.from || "/home";
-  const handleGoogleLogin = () => {
-    signInUsingGoogle()
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const hanldeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const hanldePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+ 
+ //Login with Email and Password 
+  const handleLogin = () => {
+    handleUserLogin(email, password)
+      .then(result => {
+         history.push(redirect);
+       })
+       .catch((error) => {
+        setError(error.message);
+      });
+  };
+
+  //Login with Google
+  const signInUsingGoogle = () => {
+    handleGoogleLogin()
         .then(result => {
             history.push(redirect);
         })
-}
+        .catch((error) => {
+          setError(error.message);
+        });
+        
+  }
 
     return (
-        <div className="container mx-auto my-5">
-                <h1 className="text-3xl text-gray-800 font-bold leading-none mb-3 text-center     py-5">Login Form</h1>
-          { !user?.email ? <div className="flex justify-center">
-            <div className="w-full md:w-1/3 mx-5">
-               <form onSubmit={handleGoogleLogin} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                          Email
-                        </label>
-                        <input onBlur={getUserEmail} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" placeholder="Username"/>
-                    </div>
-                    <div className="mb-6">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-                          Password
-                        </label>
-                        <input onBlur={getUserPassword} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************"/>
-                        <p className="text-red-500 text-xs italic">Please choose a password.</p>
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                          Sign In
-                        </button>
-                        
-                    </div>
+      
+          <div className="signin_form" style={{ padding:'30px 10px'}}>
+                <Container>
+                  <Row>
+                      <h1 className="text-center text-primary py-5">User Sign In Form</h1>
+                  </Row>
+                  {!user?.email ?
+                <Row className="pb-5">
+                    <Col></Col>
+                    <Col className="mb-3 bdr">
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control onChange={hanldeEmail} type="email" placeholder="Enter email" />
+                        <Form.Text  className="text-muted">
+                          We'll never share your email with anyone else.
+                        </Form.Text>
+                      </Form.Group>
+                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Label>Password</Form.Label>
+                          <Form.Control onChange={hanldePassword} type="password" placeholder="Enter password" />
+                      </Form.Group>
+                      <Button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleLogin} variant="success" >
+                          Login
+                    </Button>
                     <br />
-                  <div className="flex items-center justify-between">
-                        <button onClick={handleGoogleLogin} className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    <br />
+                    <div className="flex items-center justify-between">
+                        <button onClick={signInUsingGoogle} className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                           Sign Up With Google
                         </button>
                         <Link className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" to="/register">New To site??</Link>
                   </div>
-              </form>
-           </div>
-         </div> : <Row> 
-                 <Alert  variant={'danger'}>
-                       You are already logged In!
-                </Alert> </Row> }
-        </div>
+                    </Col>
+                    <Col></Col>
+                </Row> : <Alert  variant={'danger'}>
+                              <h1 className="text-center" >You are signed in</h1>
+                        </Alert> }
+
+                        {error && <Row>
+                    <Alert className="text-center"  variant={'danger'}>
+                          {error}
+                  </Alert>
+               </Row> }
+              </Container>
+              
+          </div>
+            
     );
 };
 
