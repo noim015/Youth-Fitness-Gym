@@ -57,6 +57,7 @@ const Register = () => {
                 setError(error.message);
               });
       }
+      
  
     return (
         <div className="signin_form" style={{ padding:'30px 10px'}}>
@@ -74,14 +75,14 @@ const Register = () => {
               </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={hanldeEmail} type="email" placeholder="Enter email" />
+                    <Form.Control onChange={hanldeEmail} type="email" placeholder="Enter email" required/>
                     <Form.Text  className="text-muted">
                     We'll never share your email with anyone else.
                     </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control onChange={hanldePassword} type="password" placeholder="Enter password" />
+                  <Form.Control onChange={hanldePassword} type="password" placeholder="Enter password" required />
               </Form.Group>
               <Button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleRegister} variant="success" >
                   Sign Up
