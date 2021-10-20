@@ -15,7 +15,7 @@ const Login = () => {
   } = useFirebase();
   const location = useLocation();
   const history = useHistory();
-  const redirect = location.state?.from || "/home";
+  const redirect = location.state?.from || "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
