@@ -1,6 +1,6 @@
 # Youth Fitness Gym
 
-The live link for the website is [Youth Fitness Gym](https://ema-john-simple-19309.web.app/).
+
 
 ## Main Features
 - Be able to enroll in online courses 
